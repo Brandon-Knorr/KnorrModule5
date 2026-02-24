@@ -46,5 +46,25 @@ def get_letters(prompt):
         user_input = input(prompt)
         if re.match(letter_pattern, user_input):
             return user_input
-        print('please enter only letters')
+        print('Please use only letters')
+
+
+def get_username(prompt):
+    # Username must be 6 lowercase letters followed by 4 numbers
+    username_pattern = r"^[a-z]{6}[0-9]{4}$"
+    while True:
+        user_input = input(prompt)
+        if re.match(username_pattern, user_input):
+            return user_input
+        print('Please use 6 lowercase letters followed by 4 numbers')
+
+
+def get_valid_email(prompt):
+    # From: https://uibakery.io/regex-library/email-regex-python
+    email_pattern = r"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+    while True:
+        email = input(prompt)
+        if re.search(email_pattern, email, re.IGNORECASE):
+            return email
+        print('That is not a valid email address')
 
